@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Renad Alfurayhi - Portfolio</title>
-
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
@@ -23,59 +23,127 @@
 
         body {
             font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
 
-        .dark-background {
+        .split-layout {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background-color: var(--secondary-color);
             color: white;
+            padding: 2rem;
+            position: fixed;
+            width: 50%;
+            height: 100vh;
+        }
+
+        .right-section {
+            flex: 1;
+            margin-left: 50%;
+            min-height: 100vh;
+            background-color: white;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2rem;
         }
 
         .profile-img img {
-            max-width: 120px;
-            margin: 15px auto;
-            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
         }
 
-        .circular-progress {
-            position: relative;
-            height: 150px;
-            width: 150px;
-            margin: 20px auto;
-        }
-
-        .circular-progress svg {
-            transform: rotate(-90deg);
-        }
-
-        .circle {
-            fill: none;
-            stroke: #e5e7eb;
-            stroke-width: 8;
-        }
-
-        .progress-circle {
-            fill: none;
-            stroke: var(--primary-color);
-            stroke-width: 8;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 1s ease-in-out;
-        }
-
-        .percentage {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .skill-name {
+        .hero-content {
             text-align: center;
-            margin-top: 10px;
-            font-weight: 500;
         }
 
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .typed {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            padding: 3rem;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu i {
+            margin-right: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .split-layout {
+                flex-direction: column;
+            }
+
+            .left-section {
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .right-section {
+                margin-left: 0;
+            }
+        }
+
+        /* Rest of your existing styles for other sections */
         .section {
             padding: 60px 0;
         }
@@ -91,236 +159,75 @@
             margin-bottom: 20px;
             color: var(--secondary-color);
         }
-
-        .navmenu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 0;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .navmenu a:hover {
-            color: var(--primary-color);
-        }
-
-        .navicon {
-            margin-right: 10px;
-        }
     </style>
 </head>
 
-<body class="index-page">
-
-    <header id="header" class="header dark-background d-flex flex-column">
+<body>
+    <div class="split-layout">
+        <!-- Left Section with Image and Name -->
+        <div class="left-section">
+            <div class="profile-img">
+                <img src="/api/placeholder/200/200" alt="Renad Alfurayhi">
+            </div>
+            <div class="hero-content">
+                <h1>Renad Alfurayhi</h1>
+                <p>I'm a <span class="typed" data-typed-items="Developer,Data Scientist,IoT Developer"></span></p>
+                <div class="social-links">
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="github"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
         </div>
 
-        <a href="#" class="logo d-flex align-items-center justify-content-center">
-            <h1 class="text-white">Renad Alfurayhi</h1>
-        </a>
+        <!-- Right Section with Navigation -->
+        <div class="right-section">
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="#about">
+                            <i class="bi bi-person-circle"></i>
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#resume">
+                            <i class="bi bi-file-earmark-text"></i>
+                            Resume
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#skills">
+                            <i class="bi bi-graph-up"></i>
+                            Skills
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">
+                            <i class="bi bi-collection"></i>
+                            Portfolio
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-        <div class="social-links text-center">
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <!-- Content Sections -->
+            <section id="about" class="section">
+                <!-- About content -->
+            </section>
+
+            <section id="resume" class="section">
+                <!-- Resume content -->
+            </section>
+
+            <section id="skills" class="section">
+                <!-- Skills content -->
+            </section>
+
+            <section id="portfolio" class="section">
+                <!-- Portfolio content -->
+            </section>
         </div>
-
-        <nav id="navmenu" class="navmenu">
-            <ul class="list-unstyled">
-                <li><a href="#hero"><i class="bi bi-house navicon"></i>Home</a></li>
-                <li><a href="#about"><i class="bi bi-person navicon"></i>About</a></li>
-                <li><a href="#resume"><i class="bi bi-file-earmark navicon"></i>Resume</a></li>
-                <li><a href="#portfolio"><i class="bi bi-images navicon"></i>Portfolio</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="main">
-        <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background">
-            <div class="container text-center">
-                <h2>Renad Alfurayhi</h2>
-                <p>I'm a <span class="typed" data-typed-items="Developer">Developer</span></p>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about section">
-            <div class="container section-title">
-                <h2>About</h2>
-                <p>AI, IoT, and mobile application development converge to unlock a new era of innovation. By seamlessly integrating these fields, I aim to craft intelligent, connected experiences that push the boundaries of what's possible, shaping a smarter and more interconnected future.</p>
-            </div>
-
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Data Scientist & Mobile App Developer Specializing in iOS Development</h2>
-                        <p class="fst-italic py-3">
-                            Data Scientist, iOS Development, IoT Developer
-                        </p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>github.com/Reenad95</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+966 530 505784</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Riyadh, KSA</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor's</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>alfurayhi95@gmail.com</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills section bg-light">
-            <div class="container section-title">
-                <h2>Skills</h2>
-            </div>
-
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        <div class="circular-progress">
-                            <svg viewBox="0 0 100 100">
-                                <circle class="circle" cx="50" cy="50" r="45"/>
-                                <circle class="progress-circle" cx="50" cy="50" r="45"
-                                    stroke-dasharray="282.7"
-                                    stroke-dashoffset="98.95"/>
-                            </svg>
-                            <div class="percentage">65%</div>
-                            <div class="skill-name">SwiftUI</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="circular-progress">
-                            <svg viewBox="0 0 100 100">
-                                <circle class="circle" cx="50" cy="50" r="45"/>
-                                <circle class="progress-circle" cx="50" cy="50" r="45"
-                                    stroke-dasharray="282.7"
-                                    stroke-dashoffset="141.35"/>
-                            </svg>
-                            <div class="percentage">50%</div>
-                            <div class="skill-name">Python</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="circular-progress">
-                            <svg viewBox="0 0 100 100">
-                                <circle class="circle" cx="50" cy="50" r="45"/>
-                                <circle class="progress-circle" cx="50" cy="50" r="45"
-                                    stroke-dasharray="282.7"
-                                    stroke-dashoffset="226.16"/>
-                            </svg>
-                            <div class="percentage">20%</div>
-                            <div class="skill-name">Flutter</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Resume Section -->
-        <section id="resume" class="resume section">
-            <div class="container section-title">
-                <h2>Resume</h2>
-                <p>Passionate learner with a strong interest in programming, AI, and innovation in technology. I work hard to improve my skills and stay updated with the latest advancements. Proficient in SwiftUI and Python, I am currently expanding my expertise by working with Flutter.</p>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h3>Education</h3>
-                        <div class="resume-item">
-                            <h4>Bachelor's Degree of English Language & Literature</h4>
-                            <h5>2016 - 2021</h5>
-                            <p><em>Al-Imam Muhammad Ibn Saud Islamic University</em></p>
-                        </div>
-
-                        <h3>Certificates</h3>
-                        <div class="resume-item">
-                            <h4>Apple Developer Academy</h4>
-                        </div>
-                        <div class="resume-item">
-                            <h4>IoT bootcamp Saudi Digital Academy</h4>
-                        </div>
-                        <div class="resume-item">
-                            <h4>Data Science and Artificial Intelligence Bootcamp by SDAIA</h4>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <h3>Professional Experience</h3>
-                        <div class="resume-item">
-                            <h4>Senior graphic design specialist</h4>
-                            <h5>2019 - Present</h5>
-                            <p><em>Experion, New York, NY</em></p>
-                            <ul>
-                                <li>Lead in the design, development, and implementation of graphic, layout, and production communication materials</li>
-                                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project</li>
-                                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio section bg-light">
-            <div class="container section-title">
-                <h2>Portfolio</h2>
-            </div>
-
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 1">
-                            <div class="card-body">
-                                <h5 class="card-title">App 1</h5>
-                                <p class="card-text">Project description goes here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 2">
-                            <div class="card-body">
-                                <h5 class="card-title">App 2</h5>
-                                <p class="card-text">Project description goes here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 3">
-                            <div class="card-body">
-                                <h5 class="card-title">App 3</h5>
-                                <p class="card-text">Project description goes here</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer bg-light py-4">
-        <div class="container text-center">
-            <p>© Copyright <strong>Renad</strong>. All Rights Reserved</p>
-        </div>
-    </footer>
-
-    <!-- Scroll Top Button -->
-    <a href="#" class="btn btn-danger position-fixed bottom-0 end-0 m-4 rounded-circle" id="scroll-top">
-        <i class="bi bi-arrow-up"></i>
-    </a>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
@@ -335,21 +242,6 @@
                 backSpeed: 50,
                 backDelay: 2000,
                 loop: true
-            });
-
-            // Scroll to top button
-            const scrollBtn = document.getElementById('scroll-top');
-            window.onscroll = function() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    scrollBtn.style.display = "block";
-                } else {
-                    scrollBtn.style.display = "none";
-                }
-            };
-
-            scrollBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({top: 0, behavior: 'smooth'});
             });
         });
     </script>
